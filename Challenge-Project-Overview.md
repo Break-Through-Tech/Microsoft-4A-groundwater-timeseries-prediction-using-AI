@@ -38,6 +38,7 @@ The project holds potential due to its real-world application, fostering relevan
 
 **Company / Org:** Microsoft  
 **Challenge Advisor:** Aarti Dwivedi, aartidwivedi@microsoft.com  
+**AI Coach:** Alexandra Ladyzhensky, alexandra.ladyzhensky@breakthroughtech.org
 **Program:** Break Through Tech AI Studio - Fall 2026
 
 ---
