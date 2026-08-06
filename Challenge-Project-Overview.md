@@ -63,10 +63,14 @@ A prediction that is within 20% to 30% of the ground truth.
 Use these milestones to guide your work. Your team will create a **GitHub Projects board** to track tasks within each milestone.
 
 | Month | Milestone | Key Activities |
-|-------|-----------|----------------|
-| **September** | Data Understanding | Explore dataset, handle missing values, document findings |
-| **October** | Model Development | Train baseline model, experiment with approaches, iterate |
-| **November** | Evaluation & Presentation | Finalize model, prepare presentation, document results |
+| :--- | :--- | :--- |
+| September | Data Ingestion, Preprocessing & Time-Series EDA | • Load the GROW dataset and filter for U.S. groundwater well locations.<br>• Visualize temporal trends and analyze rolling statistics for trend and seasonality.<br>• Plot autocorrelation (ACF) and partial autocorrelation (PACF) functions.<br>• Impute missing time-series values using interpolation methods. |
+| October | LSTM Modeling & Feature Selection | • Learn time-series LSTM architecture fundamentals and train baseline models.<br>• Train an LSTM model on the GROW dataset to forecast 7-day groundwater levels.<br>• Identify and select the top 10 features most relevant to predicting water levels. |
+| November / December | Model Optimization, Evaluation & Deliverables | • Fine-tune LSTM model performance and produce comparative trend visualizations.<br>• Benchmark model accuracy against ground truth thresholds (targeting within 30% error margin).<br>• Finalize reproducible GitHub repository, documentation, and stakeholder presentation. |
+
+### Stretch Goals
+* **High-Precision Target Threshold:** Optimize model architecture and hyperparameter tuning to achieve predictions within 20% of ground truth water levels.
+* **Native Plant & Ecological Mapping Layer:** Link predicted groundwater levels with native flora datasets to generate site-specific native garden design recommendations based on water availability.
 
 > **Note for the team:** Please create a GitHub Projects board in this repository to break these milestones into weekly tasks. Go to the **Projects** tab → **New project** → Choose **Board** → Add columns for each month.
 
