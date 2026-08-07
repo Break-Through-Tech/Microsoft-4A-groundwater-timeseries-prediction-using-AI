@@ -94,7 +94,7 @@ Use these milestones to guide your work. Your team will create a **GitHub Projec
 
 ## 🛠️ Suggested Approach
 
-**ML Problem Type:** [e.g., Classification, Regression, NLP, Computer Vision, LLM/RAG]
+**ML Problem Type:** Time Series Analysis
 
 **Recommended Libraries:**
 - [e.g., pandas, scikit-learn, TensorFlow, Hugging Face]
