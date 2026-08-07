@@ -53,24 +53,26 @@ Microsoft is a global technology leader, empowering individuals and organization
 ## 🎯 The Challenge
 
 ### Project Summary
-In this project, you will use the GROW dataset and LSTM to forecast the water level in a particular groundwater well. The output will be a 7-day time series. The focus will be on the United States due to the quality and density of its data.
+In this project, you will use GROW dataset and LSTM to forecast the water level in a particular groundwater well. The output will be a 7 day time series. The focus will be on United States because of the quality and density of data. The data is available at https://zenodo.org/records/15149480. The paper is available at https://www.nature.com/articles/s41597-026-06966-1
 
 ### Success Criteria
-A prediction that is within 20% to 30% of the ground truth.
+1. A basic understanding of how to process time series data.
+2. An understanding of the fundamentals of LSTM.
+3. An understanding of how to approach large data sets.
+4. A prediction that is within 30% of the ground truth.
 
+### Stretch Goal
+Prediction within 20% of the ground truth.
+   
 ### Project Milestones
 
 Use these milestones to guide your work. Your team will create a **GitHub Projects board** to track tasks within each milestone.
 
 | Month | Milestone | Key Activities |
-| :--- | :--- | :--- |
-| September | Data Ingestion, Preprocessing & Time-Series EDA | • Load the GROW dataset and filter for U.S. groundwater well locations.<br>• Visualize temporal trends and analyze rolling statistics for trend and seasonality.<br>• Plot autocorrelation (ACF) and partial autocorrelation (PACF) functions.<br>• Impute missing time-series values using interpolation methods. |
-| October | LSTM Modeling & Feature Selection | • Learn time-series LSTM architecture fundamentals and train baseline models.<br>• Train an LSTM model on the GROW dataset to forecast 7-day groundwater levels.<br>• Identify and select the top 10 features most relevant to predicting water levels. |
-| November / December | Model Optimization, Evaluation & Deliverables | • Fine-tune LSTM model performance and produce comparative trend visualizations.<br>• Benchmark model accuracy against ground truth thresholds (targeting within 30% error margin).<br>• Finalize reproducible GitHub repository, documentation, and stakeholder presentation. |
-
-### Stretch Goals
-* **High-Precision Target Threshold:** Optimize model architecture and hyperparameter tuning to achieve predictions within 20% of ground truth water levels.
-* **Native Plant & Ecological Mapping Layer:** Link predicted groundwater levels with native flora datasets to generate site-specific native garden design recommendations based on water availability.
+|---|---|---|
+| September | Exploratory Data Analysis | • Load the database<br>• visualize temporal trends<br>• use rolling statistics to detect trends and seasonality<br>• use autocorrelation and partial autocorrelation plots<br>• impute missing values using interpolation |
+| October | LSTM Foundations & Feature Selection | • Learn the basics of LSTM and use toy datasets to develop an understanding of the method<br>• start training LSTM on the main dataset and identify 10 features that are most relevant to the feature (water level) that we are trying to predict. |
+| November | Model Refinement & Visualization | • Continue experimenting with the model and produce visualizations. |
 
 > **Note for the team:** Please create a GitHub Projects board in this repository to break these milestones into weekly tasks. Go to the **Projects** tab → **New project** → Choose **Board** → Add columns for each month.
 
@@ -81,29 +83,24 @@ Use these milestones to guide your work. Your team will create a **GitHub Projec
 **Name and Source:** GROW dataset containing groundwater well data  
 **Format:** CSV/TSV, JSON, Parquet  
 **Size:** 1gb to 5gb  
-**Location:** [Link to dataset or instructions for accessing it](https://zenodo.org/records/15149480)
+**Location:** https://zenodo.org/records/15149480
 
 ### Key Details
-- GROW dataset containing groundwater well data. The data is available at https://zenodo.org/records/15149480 and documentation is available. It will require cleaning and preprocessing.
-- The dataset may contain missing values and requires specific data transformation techniques.
+- [Brief description of what's in the data]
+- [Any known limitations or preprocessing needed]
 - [Link to data dictionary or documentation, if available]
 
 ---
 
 ## 🛠️ Suggested Approach
 
-**ML Problem Type:** Regression
+**ML Problem Type:** [e.g., Classification, Regression, NLP, Computer Vision, LLM/RAG]
 
 **Recommended Libraries:**
-- LSTM
-- Time Series Analysis
-- Google Colab
-- CSV/TSV
-- JSON
-- Parquet
+- [e.g., pandas, scikit-learn, TensorFlow, Hugging Face]
 
 **Evaluation Metrics:**
-- RMSE (Root Mean Square Error)
+- [e.g., Accuracy, Precision/Recall, RMSE, BLEU score]
 
 ---
 
@@ -112,34 +109,40 @@ Use these milestones to guide your work. Your team will create a **GitHub Projec
 The following resources will help your team understand the problem space and potential technical approaches for this project:
 
 **Background Reading:**
-- [Introduction to Time Series Forecasting](https://towardsdatascience.com/introduction-to-time-series-forecasting-6ff7b6315b53)
-- [How LSTM Works](https://towardsdatascience.com/lstm-works-quick-intro-and-walk-through-ea5dc7e3c53c)
+- [e.g., Link to an article or blog post about the problem domain]
+- [e.g., Link to an industry report or case study]
 
 **Technical Tutorials:**
-- [Time Series Forecasting in Python](https://www.datacamp.com/community/tutorials/time-series-analysis-python)
-- [LSTM Tutorial](https://machinelearningmastery.com/time-series-prediction-lstm-recurrent-neural-networks-python-keras/)
+- [e.g., Link to a free tutorial on the ML technique(s) involved]
+- [e.g., Link to documentation for a key library or tool]
 
 **Code Examples:**
-- [LSTM Implementation Example](https://github.com/keras-team/keras/blob/v2.6.0/examples/lstm_text_generation.py)
-- [Sample Time Series Forecasting](https://www.kaggle.com/code/sashashin/time-series-forecasting-in-python)
+- [e.g., Link to a relevant GitHub repo]
+- [e.g., Link to a sample implementation or starter code]
 
 **Other:**
-- [Time Series Analysis - Papers](https://arxiv.org/list/stat.ML/recent)
+- [Links to any additional resources — e.g., papers, videos, podcasts, etc.]
 
 *Feel free to explore beyond these, and share anything interesting you find with me!*
+
 
 ---
 
 ## 🤝 How We'll Work Together
 
-**Check-ins:** During our biweekly 60-min AI Studio Lab Section meeting block (2nd and 4th week of every month)  
-**Communication:** Slack (Break Through Tech workspace)  
-**Response time:** Within 48 hours on weekdays  
+**Official check-ins:** During our biweekly 45-minute AI Studio Lab Section meeting block (2nd and 4th week of every month)
 
-**Recommended Tools:**
-- **Coding:** Google Colab
-- **Collaboration:** GitHub, Notion
-- **Virtual Meetings:** Zoom
+ **Other ways to reach out to me with questions:** 
+* [e.g., Your team's channel within Break Through Tech’s Discord space]
+* [e.g., Email; please copy your teammates and AI Studio Coach]
+* [e.g., Request a team check-in on Zoom]
+* [Note: I will aim to respond within 48 hours. Please reach out to your AI Studio Coach with urgent questions.]
+
+> 💡 **Challenge Advisor: Please update the above based on your availability and preference. If you are not able to answer questions or meet with fellows outside of the biweekly Lab Section check-ins, simply write in "N/A (only available during the official check-in times)"**
+
+**Recommended free coding / collaboration tools**
+* […]
+* […]
 
 ---
 
@@ -149,12 +152,10 @@ The following resources will help your team understand the problem space and pot
 2. **Begin reviewing the dataset** using the link above
 3. **Read the GitHub Projects documentation** [here](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
 
-I'm excited to work with you!
+I’m excited to work with you!
 
 ---
 
 ## ❓ Questions?
 
-Please bring any questions to our first meeting during the week of August 24th (Break Through Tech's Bridge to Studio - Session B).
-
----
+Please bring any questions to our first meeting during the week of August 24th (Break Through Tech’s Bridge to Studio - Session C). 
