@@ -1,44 +1,8 @@
----
-
-> ## Challenge Advisor: Update & Finalize Your Project Overview
->
-> > 💡 **These grey text instructions are just for you, the team's Challenge Advisor; please delete them once you have completed the steps below.**
->
-> We've pre-populated this Challenge Project Overview page — which is what will be shared with your Break Through Tech student team in August — using the details from your submission form. You should have received an email inviting you to join this repo as a Collaborator, enabling you to add files and make edits.
-> 
-> In order for your project to be finalized and assigned to a team, please:
-> 1. **Review all sections below** and update or expand any content as needed, making sure to address the SME Feedback in the section immediately below. Look for square brackets to find the places below that require additional inputs from you (e.g., "About [Company / Org Name]").
-> 2. **Add your dataset** to the [data folder](data) in this repo.
-> 3. **Close the Issue assigned to you in this repo** to let us know that you have made your edits and the overview page is ready for final review. You can do this by going to the _Issues_ tab in the top left section of the menu above, add a comment that says "CA review complete", and click the button to Close the Issue. 
->
-> If you're unfamiliar with how to edit a page like this in GitHub, check out [this tutorial](https://ubc-lib-geo.github.io/gis-workshop-waml-template/content/handson/edit-readme.html) for a quick overview (start with step 2 and only edit this page), and [this guide](https://ubc-lib-geo.github.io/gis-workshop-waml-template/content/markdown.html) on how to use Markdown to compose text.
->
->
-> ❌ Remember that this is a public repo. Do NOT include: Proprietary data, PII, API keys, credentials, or anything confidential.
-
----
-## 📋 BTT Internal Evaluation Notes
-*(This section is for BTT staff only — remove before sharing with students)*
-
-| Check | Status | Notes |
-|-------|--------|-------|
-| Python Compatibility | 🟢 | The project uses a Python-compatible tech stack and libraries for ML, including LSTM and time series analysis, in Google Colab, which supports Python execution. |
-| Data Readiness | 🟡 | The GROW dataset requires cleaning and preprocessing, which could consume a significant amount of time (potentially 10 weeks) before analysis can begin. |
-| Resource Check | 🟢 | Utilizes free-tier tools such as Google Colab, making it accessible for students without requiring specialized hardware. |
-
-**Student Fit Score:** 6/10  
-**Technical Depth Score:** 7/10  
-**Overall Recommendation:** REVISE
-
-**Advisor Feedback Draft:**
-The project holds potential due to its real-world application, fostering relevant skills in time series analysis and machine learning. However, recommend addressing the complexity by introducing a more guided preprocessing framework (or simplifying the LSTM model). Ensure clear deliverables to help track progress against metrics without overwhelming the students. Encourage engagement with the GROW dataset ahead of the main project to identify challenges early.
-
----
-# Native Garden Design using AI
+# Groundwater time series forecasting using AI
 
 **Company / Org:** Microsoft  
-**Challenge Advisor:** Aarti Dwivedi, aartidwivedi@microsoft.com  
-**AI Coach:** Alexandra Ladyzhensky, alexandra.ladyzhensky@breakthroughtech.org
+**Challenge Advisor:** Aarti Dwivedi, aartidwivedi @ microsoft.com  
+**AI Coach:** Alexandra Ladyzhensky, alexandra.ladyzhensky @ breakthroughtech.org
 
 **Program:** Break Through Tech AI Studio - Fall 2026
 
@@ -53,13 +17,14 @@ Microsoft is a global technology leader, empowering individuals and organization
 ## 🎯 The Challenge
 
 ### Project Summary
-In this project, you will use GROW dataset and LSTM to forecast the water level in a particular groundwater well. The output will be a 7 day time series. The focus will be on United States because of the quality and density of data. The data is available at https://zenodo.org/records/15149480. The paper is available at https://www.nature.com/articles/s41597-026-06966-1
+In this project, you will use GROW dataset and LSTM to forecast the water level in a particular groundwater well. The output will be a 7 day time series. The focus will be on the two data subsets included in this repository. One is a monthly dataset and one is a daily dataset. Each dataset is clustered geographically and is suitable for beginners. The data is available at https://zenodo.org/records/15149480. The paper is available at https://www.nature.com/articles/s41597-026-06966-1
 
 ### Success Criteria
-1. A basic understanding of how to process time series data.
-2. An understanding of the fundamentals of LSTM.
-3. An understanding of how to approach large data sets.
-4. A prediction that is within 30% of the ground truth.
+1. Demonstrate good practices for exploratory data analysis.
+2. A basic understanding of how to process time series data.
+3. An understanding of the fundamentals of LSTM or choice of forecasting method.
+4. An understanding of how to approach large data sets.
+5. A prediction that is within 30% of the ground truth.
 
 ### Stretch Goal
 Prediction within 20% of the ground truth.
@@ -86,9 +51,9 @@ Use these milestones to guide your work. Your team will create a **GitHub Projec
 **Location:** https://zenodo.org/records/15149480
 
 ### Key Details
-- [Brief description of what's in the data]
-- [Any known limitations or preprocessing needed]
-- [Link to data dictionary or documentation, if available]
+- Time series data of groundwater depth/elevation along with some other attributes.
+- Details on the attributes can be found in the Readme.pdf.
+
 
 ---
 
@@ -97,10 +62,12 @@ Use these milestones to guide your work. Your team will create a **GitHub Projec
 **ML Problem Type:** Time Series Analysis
 
 **Recommended Libraries:**
-- [e.g., pandas, scikit-learn, TensorFlow, Hugging Face]
+- pandas for reading the CSV files, sktime for time series analysis (https://github.com/sktime/sktime)
+- Read https://medium.com/@katser/a-list-of-python-packages-for-time-series-analysis-c883bcadcc58 for an overview of available libraries.
 
 **Evaluation Metrics:**
-- [e.g., Accuracy, Precision/Recall, RMSE, BLEU score]
+- RMSE
+- https://eshban9492.medium.com/understanding-evaluation-metrics-for-time-series-forecasting-5c8a3c877654 - Read this for an overview of the metrics and the formulation.
 
 ---
 
@@ -109,19 +76,20 @@ Use these milestones to guide your work. Your team will create a **GitHub Projec
 The following resources will help your team understand the problem space and potential technical approaches for this project:
 
 **Background Reading:**
-- [e.g., Link to an article or blog post about the problem domain]
-- [e.g., Link to an industry report or case study]
+- https://www.nature.com/articles/s41597-026-06966-1
+- Do not worry about understanding everything in the paper. The idea is to get a high level understanding of the physical system from which your data was derived.
+- https://arxiv.org/pdf/1909.09586 do not worry about all the mathematical details, the intention is to get an idea of some of the things that go into LSTMs, which are often used for time series forecasting. You are not bound to LSTMs, you may use whichever method you choose.
 
 **Technical Tutorials:**
-- [e.g., Link to a free tutorial on the ML technique(s) involved]
-- [e.g., Link to documentation for a key library or tool]
+- https://github.com/omerbsezer/LSTM_RNN_Tutorials_with_Demo
+- https://github.com/sktime/sktime
 
 **Code Examples:**
-- [e.g., Link to a relevant GitHub repo]
-- [e.g., Link to a sample implementation or starter code]
+- https://www.sktime.net/docs/examples/forecasting/
+- https://towardsdatascience.com/advanced-time-series-forecasting-with-sktime-af8eabc76173/
+
 
 **Other:**
-- [Links to any additional resources — e.g., papers, videos, podcasts, etc.]
 
 *Feel free to explore beyond these, and share anything interesting you find with me!*
 
@@ -133,15 +101,14 @@ The following resources will help your team understand the problem space and pot
 **Official check-ins:** During our biweekly 45-minute AI Studio Lab Section meeting block (2nd and 4th week of every month)
 
  **Other ways to reach out to me with questions:** 
-* [e.g., Your team's channel within Break Through Tech’s Discord space]
-* [e.g., Email; please copy your teammates and AI Studio Coach]
-* [e.g., Request a team check-in on Zoom]
-* [Note: I will aim to respond within 48 hours. Please reach out to your AI Studio Coach with urgent questions.]
+* Will add Discord as soon as my access issues are solved.
+* Emailing me.
+* Request a team check-in on Zoom - but no more than once a week.
+* I will aim to respond within 24 hours. Please reach out to your AI Studio Coach with urgent questions.
 
-> 💡 **Challenge Advisor: Please update the above based on your availability and preference. If you are not able to answer questions or meet with fellows outside of the biweekly Lab Section check-ins, simply write in "N/A (only available during the official check-in times)"**
 
 **Recommended free coding / collaboration tools**
-* […]
+* Whatever is comfortable to you but Github should always reflect your progress.
 * […]
 
 ---
@@ -151,6 +118,8 @@ The following resources will help your team understand the problem space and pot
 1. **Review this overview document** and note any questions for our first meeting
 2. **Begin reviewing the dataset** using the link above
 3. **Read the GitHub Projects documentation** [here](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
+4. Done is better than perfect.
+5. The expectation from you is exploration, your Github history does not need to reflect only answers.
 
 I’m excited to work with you!
 
