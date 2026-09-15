@@ -33,6 +33,7 @@ In this project, you will use GROW dataset and LSTM to forecast the water level 
 
 ### Stretch Goal
 Prediction within 20% of the ground truth.
+Create a model that can predict for both monthly and daily timeseries.
    
 ### Project Milestones
 
