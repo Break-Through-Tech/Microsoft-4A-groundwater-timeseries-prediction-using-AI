@@ -2,7 +2,7 @@
 
 **Industry Partner:** Microsoft  
 **Program:** Break Through Tech AI Studio | Fall 2026  
-**Project:** Microsoft 4A – Groundwater Level Prediction
+**Project:** Microsoft 4A: Groundwater Level Prediction
 
 
 ---
