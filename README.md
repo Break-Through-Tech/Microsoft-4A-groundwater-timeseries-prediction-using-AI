@@ -108,8 +108,7 @@ Methods included:
 These analyses helped us understand the structure of the data and prepare for forecasting experiments.
 
 ### Visualizations
-
-Exploratory plots and model visualizations are available in our [project notebook](notebooks/Microsoft_4A.ipynb)
+- Exploratory plots and model visualizations are available in our [project notebook](notebooks/Microsoft_4A.ipynb)
 ---
 
 
