@@ -9,7 +9,6 @@
 
 ### 👥 **Team Members**
 
-**Example:**
 
 | Name             | GitHub Handle        | Contribution                                                             |
 |------------------|----------------------|--------------------------------------------------------------------------|
@@ -74,8 +73,6 @@ Confirm that notebook data paths point to the appropriate files before executing
 ---
 
 ## 🏗️ **Project Overview**
-
-**Describe:**
 Groundwater is an essential resource for drinking water, agriculture, and ecosystems. Predicting changes in groundwater levels is challenging because measurements vary over time and across geographic locations.
 Through Break Through Tech AI Studio, our team partnered with Microsoft to explore how machine learning can improve groundwater-level forecasting.
 Using the GROW groundwater dataset, we investigated time-series patterns and developed forecasting approaches to predict groundwater levels seven days into the future.
@@ -84,9 +81,10 @@ The broader goal is to understand how AI-based forecasting can support more info
 
 ---
 
+
+
 ## 📊 **Data Exploration**
 
-**You might consider describing the following (as applicable):**
 We use regional subsets of the GROW groundwater dataset, which contains time-series observations of groundwater depth and elevation.
 
 Source: https://zenodo.org/records/15149480
@@ -114,34 +112,79 @@ These analyses helped us understand the structure of the data and prepare for fo
 Exploratory plots and model visualizations are available in our [project notebook](notebooks/Microsoft_4A.ipynb)
 ---
 
-## 🧠 **Model Development**
 
-**You might consider describing the following (as applicable):**
 
-* Model(s) used (e.g., CNN with transfer learning, regression models)
-* Feature selection and Hyperparameter tuning strategies
-* Training setup (e.g., % of data for training/validation, evaluation metric, baseline performance)
 
-We experimented with multiple approaches for forecasting groundwater levels.
+
+## 🧠 Model Development
+
+We developed and evaluated multiple forecasting approaches to investigate how effectively machine learning can predict groundwater levels **7 days ahead**. 
+Our initial experiments focused on a single groundwater well, establishing a foundation for future evaluations across additional wells and environmental conditions.
 
 ### Forecasting Models
 
 **LSTM (Long Short-Term Memory)**
-A recurrent neural network architecture designed to model temporal dependencies in sequential observations.
+
+We implemented an LSTM neural network to capture temporal dependencies in groundwater observations. The model uses **30 days of historical measurements** to predict groundwater levels for the following seven days.
+
+The architecture includes:
+- An LSTM layer with 32 units
+- A dense layer with 16 units and ReLU activation
+- An output layer producing seven daily predictions
 
 **XGBoost**
-A gradient-boosted decision tree model used to investigate an alternative approach to groundwater forecasting.
+
+We implemented XGBoost, a gradient-boosted decision tree algorithm, as an alternative forecasting method. Using the previous 30 groundwater observations as input features, separate regressors predict each of the next seven days.
+
+We also investigated **predicting changes in groundwater levels rather than absolute elevations**, exploring whether an alternative target formulation could improve accuracy.
 
 **Persistence Baseline**
-A simple forecasting reference used to evaluate whether more complex models provide meaningful improvements.
 
-### Forecasting Setup
-- Input: 30 days of historical groundwater observations
-- Forecast horizon: 7 days
-- Evaluation: RMSE and MAE
-- Data splitting: Chronological training, validation, and test sets
+We established a persistence baseline that assumes the most recently observed groundwater level remains unchanged throughout the next seven days. 
+This provides a reference for determining whether more complex models deliver meaningful improvements.
 
-We also experimented with predicting changes in groundwater levels rather than absolute elevations, allowing us to compare different target formulations.
+### Feature Engineering and Selection
+
+- Applied a **30-day sliding window** to create training examples with seven-day prediction targets.
+- Analyzed temporal trends, potential seasonal patterns, and groundwater variability through exploratory analysis and rolling statistics.
+- Examined **XGBoost feature importance** to identify which historical observations contributed most to predictions.
+- Initially focused on groundwater-level history as the primary input, providing a baseline for future experiments with additional environmental features.
+
+### Training Setup and Hyperparameters
+
+We divided forecasting examples chronologically into approximately **70% training, 15% validation, and 15% testing**, with gaps between splits to prevent overlapping forecast targets.
+
+For the LSTM, groundwater measurements were standardized using training-set statistics to prevent information leakage.
+
+| Parameter | LSTM | XGBoost |
+|---|---|---|
+| Input window | 30 days | 30 days |
+| Forecast horizon | 7 days | 7 days |
+| Architecture / configuration | 32 LSTM units, 16-unit dense layer | 200 trees, maximum depth 3 |
+| Learning settings | Adam optimizer, MSE loss | Learning rate: 0.05 |
+| Additional settings | Batch size: 32, up to 40 epochs | Subsample: 0.9, column sample: 0.9 |
+| Training control | Early stopping (patience: 6) | Fixed initial configuration |
+
+These configurations represent our initial experiments rather than the results of an exhaustive hyperparameter search.
+
+### Model Evaluation
+
+We assessed forecasting accuracy using:
+
+- **Root Mean Squared Error (RMSE):** Measures the magnitude of prediction errors, penalizing larger errors more strongly.
+- **Mean Absolute Error (MAE):** Measures the average absolute difference between predicted and observed groundwater levels.
+
+Additional evaluation included:
+- Comparing LSTM and XGBoost against the persistence baseline.
+- Examining prediction errors across each of the seven forecast days.
+- Visualizing **actual versus predicted groundwater levels**.
+- Monitoring LSTM training and validation loss.
+- Analyzing XGBoost feature importance and alternative prediction targets.
+
+These experiments helped identify promising forecasting approaches and areas for further improvement.
+
+
+
 
 ---
 
@@ -156,6 +199,7 @@ We also experimented with predicting changes in groundwater levels rather than a
 **Potential visualizations to include:**
 
 * Confusion matrix, precision-recall curve, feature importance plot, prediction distribution, outputs from fairness or explainability tools
+
 
 ### XGBoost Experiment
 
@@ -182,12 +226,33 @@ See [Microsoft_4A.ipynb](notebooks/Microsoft_4A.ipynb).
 
 ---
 
-## 🚀 **Next Steps**
-**You might consider addressing the following (as applicable):**
+## 🚀 Next Steps
 
-* What are some of the limitations of your model?
-* What would you do differently with more time/resources?
-* What additional datasets or techniques would you explore?
+Our initial experiments highlight both the potential of machine learning for groundwater forecasting and several opportunities to improve model accuracy, generalization, and reliability.
+
+### Current Limitations
+
+- **Limited geographic coverage:** Initial forecasting experiments focused on one groundwater well. Performance may vary across other wells, regions, and environmental conditions.
+- **Limited input features:** Current forecasting models primarily rely on historical groundwater levels without fully incorporating additional environmental variables.
+- **Missing observations:** Forecasting windows containing missing groundwater measurements were excluded, reducing the available training data.
+- **Model generalization:** Models have been evaluated using chronological splits from one well; additional testing is needed to assess performance across independent locations and time periods.
+- **Baseline performance:** The persistence baseline outperformed the original LSTM and XGBoost models on the initial test comparison, highlighting the importance of evaluating complex approaches against simpler alternatives.
+
+### Planned Improvements
+
+- **Expand to multiple wells:** Evaluate forecasting performance across different groundwater locations to investigate geographic generalization.
+- **Incorporate environmental features:** Explore vegetation indicators such as NDVI and other available environmental variables to determine whether they improve predictions.
+- **Optimize model configurations:** Experiment with LSTM architectures, XGBoost hyperparameters, and alternative forecasting techniques.
+- **Improve preprocessing:** Investigate missing-data strategies while minimizing the risk of information leakage.
+- **Strengthen evaluation:** Compare RMSE and MAE across different wells, forecast horizons, and time periods to better understand model reliability.
+
+### Future Research Directions
+
+With additional time and resources, we would explore **multivariate forecasting models** that combine groundwater history with environmental predictors,
+assess approaches that generalize across multiple wells, and investigate longer forecast horizons.
+We also aim to evaluate our predictions against **Microsoft's challenge goal of achieving predictions within 30% of ground truth**, with a stretch goal of 20%.
+Ultimately, these improvements could contribute to a more reliable and transferable AI-based forecasting framework for groundwater monitoring and environmental decision-making.
+
 
 ---
 
